@@ -88,4 +88,5 @@ The project follows a clear separation of concerns:
 - JSDOM (DOM test environment)
 
 ## License
+
 This project is licensed under the MIT License.
