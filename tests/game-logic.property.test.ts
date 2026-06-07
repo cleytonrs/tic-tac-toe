@@ -76,13 +76,11 @@ function drawnBoardArb(): fc.Arbitrary<Board> {
 // **Feature: tic-tac-toe, Property 1: Win Detection**
 describe('Property 1: Win Detection', () => {
   /**
-   * **Validates: Requirements 5.1, 5.2, 5.3**
-   *
    * For any 3x3 board state where a player has three consecutive marks in a
    * horizontal row, vertical column, or diagonal line, checkWinner(board)
    * SHALL return that player's mark as the winner along with the correct
    * three winning cell indices.
-   */
+  **/
   it('detects winner correctly for any board with three in a line', () => {
     fc.assert(
       fc.property(
@@ -102,12 +100,10 @@ describe('Property 1: Win Detection', () => {
 // **Feature: tic-tac-toe, Property 2: Draw Detection**
 describe('Property 2: Draw Detection', () => {
   /**
-   * **Validates: Requirements 5.5**
-   *
    * For any 3x3 board state where all nine cells are filled and no player
    * has three consecutive marks in any line, checkDraw(board) SHALL return
    * true and checkWinner(board) SHALL return null.
-   */
+  **/
   it('detects draw correctly for any full board with no winner', () => {
     fc.assert(
       fc.property(
@@ -125,12 +121,10 @@ describe('Property 2: Draw Detection', () => {
 // **Feature: tic-tac-toe, Property 3: Move Semantics**
 describe('Property 3: Move Semantics', () => {
   /**
-   * **Validates: Requirements 4.2, 4.3, 4.4**
-   *
    * For any valid board state and any cell index, if the cell is empty then
    * placeMark returns a new board with only that cell changed. If the cell
    * is occupied, placeMark returns null.
-   */
+  **/
   it('places mark in empty cell and rejects occupied cell', () => {
     const boardArb = fc.tuple(
       ...Array(9).fill(null).map(() => fc.constantFrom<Mark>(null, 'X', 'O'))
@@ -173,12 +167,10 @@ describe('Property 3: Move Semantics', () => {
 // **Feature: tic-tac-toe, Property 4: Board Lock on Round End**
 describe('Property 4: Board Lock on Round End', () => {
   /**
-   * **Validates: Requirements 4.7**
-   *
    * For any board state where checkWinner returns a winner or checkDraw
    * returns true, all subsequent calls to placeMark for any index SHALL
    * be rejected (the board is terminal).
-   */
+  **/
   it('rejects all moves on terminal boards', () => {
     // Generate terminal boards (won or drawn)
     const wonBoardArb = boardWithWinArb().map(({ board }) => board);
@@ -216,12 +208,10 @@ describe('Property 4: Board Lock on Round End', () => {
 // **Feature: tic-tac-toe, Property 5: Name Validation**
 describe('Property 5: Name Validation', () => {
   /**
-   * **Validates: Requirements 3.4, 3.5**
-   *
    * For any string input, if between 1 and 20 chars and not all whitespace,
    * validatePlayerName returns the trimmed input. For empty/whitespace-only,
    * it returns the default name.
-   */
+  **/
   it('validates names correctly for arbitrary string inputs', () => {
     fc.assert(
       fc.property(
@@ -263,11 +253,9 @@ describe('Property 5: Name Validation', () => {
 // **Feature: tic-tac-toe, Property 6: Score Accumulation**
 describe('Property 6: Score Accumulation', () => {
   /**
-   * **Validates: Requirements 6.2, 6.3, 6.4**
-   *
    * For any sequence of round results, applying them sequentially to a score
    * manager starting from zero produces correct counts.
-   */
+  **/
   it('scores accumulate correctly for any sequence of round results', () => {
     fc.assert(
       fc.property(
@@ -303,12 +291,10 @@ describe('Property 6: Score Accumulation', () => {
 // **Feature: tic-tac-toe, Property 7: Play Again State Reset**
 describe('Property 7: Play Again State Reset', () => {
   /**
-   * **Validates: Requirements 7.3**
-   *
    * For any completed round, triggering "Play Again" produces a game state
    * where the board is empty, and the starting mark is the opposite of the
    * previous round's starting mark.
-   */
+  **/
   it('resets board and alternates starting mark', () => {
     fc.assert(
       fc.property(
@@ -342,12 +328,10 @@ describe('Property 7: Play Again State Reset', () => {
 // **Feature: tic-tac-toe, Property 8: Share Text Constraints**
 describe('Property 8: Share Text Constraints', () => {
   /**
-   * **Validates: Requirements 8.4**
-   *
    * For any valid pair of player names (1-20 chars) and non-negative scores,
    * generateShareText produces a string ≤280 chars containing both names,
    * both win counts, and the draw count.
-   */
+  **/
   it('generates share text within 280 chars containing all required info', () => {
     const validNameArb = fc.string({ minLength: 1, maxLength: 20 }).filter(s => s.trim().length > 0);
     const scoreArb = fc.nat({ max: 999 });
