@@ -1,0 +1,18 @@
+{
+  "name": "tic-tac-toe",
+  "version": "1.0.0",
+  "description": "Self-contained browser-based Tic Tac Toe game",
+  "private": true,
+  "scripts": {
+    "build": "tsc && node -e \"const fs=require('fs');let c=fs.readFileSync('game.js','utf8');c=c.replace(/^export /gm,'');fs.writeFileSync('game.js',c)\"",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.0",
+    "vitest": "^3.1.0",
+    "fast-check": "^4.0.0",
+    "jsdom": "^25.0.0",
+    "@vitest/coverage-v8": "^3.1.0"
+  }
+}

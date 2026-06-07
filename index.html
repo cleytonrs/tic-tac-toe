@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tic Tac Toe</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Start Screen -->
+    <section id="screen-start" class="screen active" aria-label="Start Screen">
+      <h1 class="game-title">Tic Tac Toe</h1>
+      <div class="name-inputs">
+        <div class="input-group">
+          <label for="player-x-name">Player X</label>
+          <input type="text" id="player-x-name" maxlength="20" value="Player X" aria-label="Player X name">
+        </div>
+        <div class="input-group">
+          <label for="player-o-name">Player O</label>
+          <input type="text" id="player-o-name" maxlength="20" value="Player O" aria-label="Player O name">
+        </div>
+      </div>
+      <button id="btn-start" class="btn btn-primary">Start Game</button>
+    </section>
+
+    <!-- Game Screen -->
+    <section id="screen-game" class="screen" aria-label="Game Screen">
+      <div class="turn-indicator" id="turn-indicator">Player X's turn (X)</div>
+      <div class="board" id="game-board" role="grid" aria-label="Tic Tac Toe Board">
+        <button class="cell" data-index="0" aria-label="Cell 1"></button>
+        <button class="cell" data-index="1" aria-label="Cell 2"></button>
+        <button class="cell" data-index="2" aria-label="Cell 3"></button>
+        <button class="cell" data-index="3" aria-label="Cell 4"></button>
+        <button class="cell" data-index="4" aria-label="Cell 5"></button>
+        <button class="cell" data-index="5" aria-label="Cell 6"></button>
+        <button class="cell" data-index="6" aria-label="Cell 7"></button>
+        <button class="cell" data-index="7" aria-label="Cell 8"></button>
+        <button class="cell" data-index="8" aria-label="Cell 9"></button>
+      </div>
+      <div class="scoreboard" id="scoreboard-game">
+        <div class="score-row">
+          <span class="score-name" id="score-x-name">Player X</span>
+          <span class="score-value" id="score-x-wins">0</span>
+        </div>
+        <div class="score-row">
+          <span class="score-name" id="score-o-name">Player O</span>
+          <span class="score-value" id="score-o-wins">0</span>
+        </div>
+        <div class="score-row">
+          <span class="score-name">Draws</span>
+          <span class="score-value" id="score-draws">0</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Result Screen -->
+    <section id="screen-result" class="screen" aria-label="Result Screen">
+      <h2 class="result-text" id="result-text">Winner!</h2>
+      <div class="result-buttons">
+        <button id="btn-play-again" class="btn btn-primary">Play Again</button>
+        <button id="btn-finish" class="btn btn-secondary">Finish Game</button>
+      </div>
+    </section>
+
+    <!-- End Screen -->
+    <section id="screen-end" class="screen" aria-label="End Screen">
+      <h2 class="end-title">Game Over</h2>
+      <div class="scoreboard final-scoreboard" id="scoreboard-final">
+        <div class="score-row">
+          <span class="score-name" id="final-x-name">Player X</span>
+          <span class="score-value" id="final-x-wins">0</span>
+        </div>
+        <div class="score-row">
+          <span class="score-name" id="final-o-name">Player O</span>
+          <span class="score-value" id="final-o-wins">0</span>
+        </div>
+        <div class="score-row">
+          <span class="score-name">Draws</span>
+          <span class="score-value" id="final-draws">0</span>
+        </div>
+      </div>
+      <div class="end-buttons">
+        <button id="btn-share" class="btn btn-primary">Share Results</button>
+        <button id="btn-new-game" class="btn btn-secondary">New Game</button>
+      </div>
+
+      <!-- Share Dialog -->
+      <div id="share-dialog" class="share-dialog hidden" role="dialog" aria-label="Share Results">
+        <div class="share-dialog-content">
+          <p class="share-text" id="share-text-display"></p>
+          <div class="share-links">
+            <a id="share-twitter" class="btn btn-share" href="#" target="_blank" rel="noopener noreferrer">Twitter</a>
+            <a id="share-facebook" class="btn btn-share" href="#" target="_blank" rel="noopener noreferrer">Facebook</a>
+          </div>
+          <p id="share-copied-msg" class="share-copied hidden">Copied to clipboard!</p>
+          <button id="btn-close-share" class="btn btn-secondary">Close</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script src="game.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
