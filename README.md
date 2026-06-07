@@ -2,6 +2,8 @@
 
 🕹️ A self-contained, browser-based Tic Tac Toe game. No external frameworks, no network dependencies — just open `index.html` in your browser.
 
+👉 **[Play the Live Demo here](https://cleytonrs.github.io/tic-tac-toe/)**
+
 ## How to Play
 
 1. Open `index.html` directly in your browser (file:// or any local server)
